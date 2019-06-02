@@ -74,7 +74,83 @@ ms net/minecraft/network/packet/SetSign
 w net/minecraft/network/packet/MapData
 ix net/minecraft/network/packet/StatisticIncrement
 
-# Server Core
+# Server Networking
+cu net/minecraft/server/network/NetworkListener
+	c running
+	f connectionId
+ld net/minecraft/server/network/ConnectionAcceptorThread
+ee net/minecraft/server/network/HandshakePacketHandler
+	g name
+jl net/minecraft/server/network/PlayerConnection
+	g outLock
+	n sendQueue
+	o lowPrioritySendQueue
+	h clientSocket
+	i remoteAddress
+	j in
+	k out
+	p handler
+	m recvQueue
+	a (Lgt;)V sendPacket
+ow net/minecraft/server/network/ReallyScaryStopThread
+
+# Minecraft Core
+net/minecraft/server/MinecraftServer net/minecraft/server/MinecraftServer
+	a log
+	d properties
+	f playerList
+	l onlineMode
+	m spawnAnimals
+	n pvp
+	o allowFlight
+	c ()Z start
+ky net/minecraft/server/ServerProperties
+	a logger
+	b properties
+	c file
+	a ()V generate
+	b ()V save
+	a (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; get
+	a (Ljava/lang/String;I)I get
+	a (Ljava/lang/String;Z)Z get
+	b (Ljava/lang/String;Z)Z set
+mb net/minecraft/command/CommandSender
+	b (Ljava/lang/String;)V sendMessage
+	d ()Ljava/lang/String; getName
+fc net/minecraft/server/PlayerList
+	b onlinePlayers
+	c server
+	f bannedPlayers
+	g bannedIPs
+	h ops
+	i whitelist
+	j bannedPlayersFile
+	k bannedIPsFile
+	l opsFile
+	m whitelistFile
+	a (Ljava/lang/String;)V banPlayer
+	b (Ljava/lang/String;)V pardonPlayer
+	c (Ljava/lang/String;)V banIP
+   	d (Ljava/lang/String;)V pardonIP
+	e (Ljava/lang/String;)V opPlayer
+   	f (Ljava/lang/String;)V deopPlayer
+   	h (Ljava/lang/String;)Z isPlayerOpped
+	g (Ljava/lang/String;)Z canPlayerJoin
+	a (Ljava/lang/String;Ljava/lang/String;)Z sendToPlayer
+	c ()Ljava/lang/String; getOnlinePlayerNames
+	d (Ljava/lang/String;)Ldl; getPlayer
+	g ()V loadBannedPlayers
+	h ()V saveBannedPlayers
+	i ()V loadIpBans
+	j ()V saveIpBans
+	l ()V loadOps
+	k ()V saveOps
+	m ()V loadWhitelist
+	n ()V saveWhitelist
+	k (Ljava/lang/String;)V whitelist
+	l (Ljava/lang/String;)V unwhitelist
+	e ()Ljava/util/Set; getWhitelist
+
 fy net/minecraft/inventory/ItemStack
 	a amount
 	c id
@@ -124,6 +200,9 @@ ns net/minecraft/model/statistic/Statistic
 gg net/minecraft/model/statistic/StatisticRegistry
 	a statisticById
 	b allStatistics
+hp net/minecraft/inventory/Inventory
+	a (ILfy;) setItem
+	c ()Ljava/lang/String; getTitle
 
 # Blocks
 na net/minecraft/block/Block
@@ -145,6 +224,10 @@ lq net/minecraft/entity/Entity
 	E ()V onEntityPassengerTick
 	J ()V die
 be net/minecraft/entity/Wolf
+em net/minecraft/entity/Human
+	r name
+hl net/minecraft/entity/LivingEntity
+dl net/minecraft/entity/Player
 
 # Worlds and Regions
 jx net/minecraft/world/RegionFile
@@ -178,3 +261,14 @@ dj net/minecraft/world/World
 
 # NBT
 iq net/minecraft/nbt/NBTTagCompound
+
+# Misc
+nf net/minecraft/server/gui/ServerFrame
+gy net/minecraft/server/gui/ServerStatusComponent
+i net/minecraft/server/gui/ServerOnlineComponent
+ci net/minecraft/server/gui/ServerLogComponent
+r net/minecraft/server/gui/CommandExecuteActionListener
+s net/minecraft/server/gui/CommandExecuteFocusListener
+bs net/minecraft/server/ConsoleInputReadThread
+mc net/minecraft/command/CommandExecutor
+af net/minecraft/command/CommandToExecute
