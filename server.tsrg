@@ -82,7 +82,7 @@ mo net/minecraft/server/util/DataWatcher
 ht net/minecraft/server/util/DataWatcherObject
 cz net/minecraft/server/math/AxisAlignedBB
 	g pool
-	h avail
+	h used
 	a minX
 	b minY
 	c minZ
@@ -97,7 +97,7 @@ cz net/minecraft/server/math/AxisAlignedBB
 	d (DDD)Lcz; translate
 ba net/minecraft/server/math/Vec3D
 	d pool
-	e avail
+	e used
 	a x
 	b y
 	c z
