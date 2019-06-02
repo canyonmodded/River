@@ -3,84 +3,85 @@
 # Licensed under the MIT license.
 
 # Server Packets
-gt net/minecraft/server/network/Packet
+gt net/minecraft/network/Packet
 	a (Ljava/io/DataInputStream;)V decode
 	a (Ljava/io/DataOutputStream;)V encode
 	a (Lme;)V handle
-pv net/minecraft/server/network/packet/Disconnect
-hs net/minecraft/server/network/packet/KeepAlive
-iv net/minecraft/server/network/packet/Login
-hy net/minecraft/server/network/packet/Handshake
-jk net/minecraft/server/network/packet/Chat
-ew net/minecraft/server/network/packet/TimeUpdate
-l net/minecraft/server/network/packet/EntityEquipment
-km net/minecraft/server/network/packet/SpawnPosition
-a net/minecraft/server/network/packet/UseEntity
-db net/minecraft/server/network/packet/UpdateHealth
-ji net/minecraft/server/network/packet/Respawn
-fm net/minecraft/server/network/packet/PlayerPacket
-v net/minecraft/server/network/packet/PlayerPosition
-nm net/minecraft/server/network/packet/PlayerLook
-dc net/minecraft/server/network/packet/PlayerPositionLook
-gm net/minecraft/server/network/packet/PlayerDig
-eo net/minecraft/server/network/packet/PlayerPlaceBlock
-fd net/minecraft/server/network/packet/PlayerChangeSlot
-gq net/minecraft/server/network/packet/PlayerUseBed
-im net/minecraft/server/network/packet/EntityAnimate
-mk net/minecraft/server/network/packet/PlayerAction
-hu net/minecraft/server/network/packet/NamedEntitySpawn
-if net/minecraft/server/network/packet/ItemEntitySpawn
-cc net/minecraft/server/network/packet/CollectItem
-ls net/minecraft/server/network/packet/ObjectSpawn
-gf net/minecraft/server/network/packet/MobSpawn
-nt net/minecraft/server/network/packet/ArtSpawn
-jz net/minecraft/server/network/packet/StanceUpdate
-ef net/minecraft/server/network/packet/EntityVelocity
-la net/minecraft/server/network/packet/EntityDestroy
-mr net/minecraft/server/network/packet/EntityPacket
-lw net/minecraft/server/network/packet/EntityMove
-lh net/minecraft/server/network/packet/EntityLook
-ju net/minecraft/server/network/packet/EntityMoveLook
-kn net/minecraft/server/network/packet/EntityTeleport
-gc net/minecraft/server/network/packet/EntityStatus
-io net/minecraft/server/network/packet/EntityAttach
-nc net/minecraft/server/network/packet/EntityUpdateMetadata
-li net/minecraft/server/network/packet/ChunkPrepare
-cs net/minecraft/server/network/packet/ChunkData
-oq net/minecraft/server/network/packet/BlockMultiChange
-mn net/minecraft/server/network/packet/BlockChange
-nv net/minecraft/server/network/packet/BlockAction
-kt net/minecraft/server/network/packet/Explosion
+me net/minecraft/network/PacketHandler
+pv net/minecraft/network/packet/Disconnect
+hs net/minecraft/network/packet/KeepAlive
+iv net/minecraft/network/packet/Login
+hy net/minecraft/network/packet/Handshake
+jk net/minecraft/network/packet/Chat
+ew net/minecraft/network/packet/TimeUpdate
+l net/minecraft/network/packet/EntityEquipment
+km net/minecraft/network/packet/SpawnPosition
+a net/minecraft/network/packet/UseEntity
+db net/minecraft/network/packet/UpdateHealth
+ji net/minecraft/network/packet/Respawn
+fm net/minecraft/network/packet/PlayerPacket
+v net/minecraft/network/packet/PlayerPosition
+nm net/minecraft/network/packet/PlayerLook
+dc net/minecraft/network/packet/PlayerPositionLook
+gm net/minecraft/network/packet/PlayerDig
+eo net/minecraft/network/packet/PlayerPlaceBlock
+fd net/minecraft/network/packet/PlayerChangeSlot
+gq net/minecraft/network/packet/PlayerUseBed
+im net/minecraft/network/packet/EntityAnimate
+mk net/minecraft/network/packet/PlayerAction
+hu net/minecraft/network/packet/NamedEntitySpawn
+if net/minecraft/network/packet/ItemEntitySpawn
+cc net/minecraft/network/packet/CollectItem
+ls net/minecraft/network/packet/ObjectSpawn
+gf net/minecraft/network/packet/MobSpawn
+nt net/minecraft/network/packet/ArtSpawn
+jz net/minecraft/network/packet/StanceUpdate
+ef net/minecraft/network/packet/EntityVelocity
+la net/minecraft/network/packet/EntityDestroy
+mr net/minecraft/network/packet/EntityPacket
+lw net/minecraft/network/packet/EntityMove
+lh net/minecraft/network/packet/EntityLook
+ju net/minecraft/network/packet/EntityMoveLook
+kn net/minecraft/network/packet/EntityTeleport
+gc net/minecraft/network/packet/EntityStatus
+io net/minecraft/network/packet/EntityAttach
+nc net/minecraft/network/packet/EntityUpdateMetadata
+li net/minecraft/network/packet/ChunkPrepare
+cs net/minecraft/network/packet/ChunkData
+oq net/minecraft/network/packet/BlockMultiChange
+mn net/minecraft/network/packet/BlockChange
+nv net/minecraft/network/packet/BlockAction
+kt net/minecraft/network/packet/Explosion
 	a originX
 	b originY
 	c originZ
-ds net/minecraft/server/network/packet/EffectPlay
-bg net/minecraft/server/network/packet/IllegalAction
+ds net/minecraft/network/packet/EffectPlay
+bg net/minecraft/network/packet/IllegalAction
 	a availableStates
-df net/minecraft/server/network/packet/ThunderboltSpawn
-fw net/minecraft/server/network/packet/WindowOpen
-hw net/minecraft/server/network/packet/WindowClose
-ke net/minecraft/server/network/packet/WindowClick
-fe net/minecraft/server/network/packet/WindowSetSlot
-gr net/minecraft/server/network/packet/WindowItems
-id net/minecraft/server/network/packet/WindowSetProgress
-ja net/minecraft/server/network/packet/WindowTransaction
-ms net/minecraft/server/network/packet/SetSign
+df net/minecraft/network/packet/ThunderboltSpawn
+fw net/minecraft/network/packet/WindowOpen
+hw net/minecraft/network/packet/WindowClose
+ke net/minecraft/network/packet/WindowClick
+fe net/minecraft/network/packet/WindowSetSlot
+gr net/minecraft/network/packet/WindowItems
+id net/minecraft/network/packet/WindowSetProgress
+ja net/minecraft/network/packet/WindowTransaction
+ms net/minecraft/network/packet/SetSign
 	a x
 	b y
 	c z
 	d lines
-w net/minecraft/server/network/packet/MapData
-ix net/minecraft/server/network/packet/StatisticIncrement
+w net/minecraft/network/packet/MapData
+ix net/minecraft/network/packet/StatisticIncrement
 
 # Server Core
-fy net/minecraft/server/inventory/ItemStack
+fy net/minecraft/inventory/ItemStack
 	a amount
 	c id
 	d damage
-mo net/minecraft/server/util/DataWatcher
-ht net/minecraft/server/util/DataWatcherObject
-cz net/minecraft/server/math/AxisAlignedBB
+mo net/minecraft/util/DataWatcher
+ht net/minecraft/util/DataWatcherObject
+cz net/minecraft/math/AxisAlignedBB
 	g pool
 	h used
 	a minX
@@ -95,7 +96,7 @@ cz net/minecraft/server/math/AxisAlignedBB
 	b (Lcz;)V set
 	b (DDD)Lcz; grow
 	d (DDD)Lcz; translate
-ba net/minecraft/server/math/Vec3D
+ba net/minecraft/math/Vec3D
 	d pool
 	e used
 	a x
@@ -110,11 +111,11 @@ ba net/minecraft/server/math/Vec3D
 	d (DDD)D distanceSquared
 
 # Blocks
-na net/minecraft/server/block/Block
+na net/minecraft/block/Block
 
 # Entities
-lq net/minecraft/server/entity/Entity
+lq net/minecraft/entity/Entity
 	aG entityId
 
 # NBT
-iq net/minecraft/server/nbt/NBTTagCompound
+iq net/minecraft/nbt/NBTTagCompound
