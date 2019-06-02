@@ -79,6 +79,7 @@ fy net/minecraft/inventory/ItemStack
 	a amount
 	c id
 	d damage
+ej net/minecraft/item/Item
 mo net/minecraft/util/DataWatcher
 ht net/minecraft/util/DataWatcherObject
 cz net/minecraft/math/AxisAlignedBB
@@ -109,6 +110,20 @@ ba net/minecraft/math/Vec3D
 	a (Lba;)D distance
 	a (Lba;)D distanceSquared
 	d (DDD)D distanceSquared
+fq net/minecraft/math/MathUtil
+	a SINE_TABLE
+	a (D)F sqrt
+	c (F)F sqrt
+	d (F)F ceilNearestRound
+	b (F)F ceilNearestRound
+	e (F)F abs
+	a (DD)D absMax
+	a (F)F sin
+	b (F)F cos
+ns net/minecraft/model/statistic/Statistic
+gg net/minecraft/model/statistic/StatisticRegistry
+	a statisticById
+	b allStatistics
 
 # Blocks
 na net/minecraft/block/Block
@@ -116,11 +131,19 @@ na net/minecraft/block/Block
 # Entities
 lq net/minecraft/entity/Entity
 	aG entityId
+	aM lastX
+	aN lastY
+	aO lastZ
+	aP locX
+	aQ locY
+	aR locZ
 	bw ticksLived
-	
+	bh dead
+	c (DDD)V setPosition
 	m_ ()V onEntityTick
 	R ()V baseTick
 	E ()V onEntityPassengerTick
+	J ()V die
 be net/minecraft/entity/Wolf
 
 # Worlds and Regions
@@ -150,6 +173,8 @@ kq net/minecraft/world/RegionFileCache
 	a ()V clean
 	c (Ljava/io/File;II)Ljava/io/DataInputStream; read
 	d (Ljava/io/File;II)Ljava/io/DataOutputStream; write
+dj net/minecraft/world/World
+	b entities
 
 # NBT
 iq net/minecraft/nbt/NBTTagCompound
