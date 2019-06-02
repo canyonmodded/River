@@ -116,6 +116,40 @@ na net/minecraft/block/Block
 # Entities
 lq net/minecraft/entity/Entity
 	aG entityId
+	bw ticksLived
+	
+	m_ ()V onEntityTick
+	R ()V baseTick
+	E ()V onEntityPassengerTick
+be net/minecraft/entity/Wolf
+
+# Worlds and Regions
+jx net/minecraft/world/RegionFile
+	a emptySector
+	b targetFile
+	c file
+	d offsets
+	e timestamps
+	f sectorsFree
+	g written
+	a ()I getAndClearWritten
+	a (II)Ljava/io/DataInputStream; readChunk
+	b (II)Ljava/io/DataOutputStream; writeChunk
+	a (II[BI)V save
+	a (I[BI) writeSector
+	d (II)Z inBounds
+	e (II)I getOffset
+	c (II)Z hasChunk
+	a (III)V writeOffset
+	b (III)V writeTimestamp
+	b ()V close
+fh net/minecraft/world/ChunkBuffer
+kq net/minecraft/world/RegionFileCache
+	a openRegions
+	a (Ljava/io/File;II)Ljx; getRegion
+	a ()V clean
+	c (Ljava/io/File;II)Ljava/io/DataInputStream; read
+	d (Ljava/io/File;II)Ljava/io/DataOutputStream; write
 
 # NBT
 iq net/minecraft/nbt/NBTTagCompound
