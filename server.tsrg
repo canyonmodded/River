@@ -1,0 +1,120 @@
+# Server-specific mappings for Canyon
+#
+# Licensed under the MIT license.
+
+# Server Packets
+gt net/minecraft/server/network/Packet
+	a (Ljava/io/DataInputStream;)V decode
+	a (Ljava/io/DataOutputStream;)V encode
+	a (Lme;)V handle
+pv net/minecraft/server/network/packet/Disconnect
+hs net/minecraft/server/network/packet/KeepAlive
+iv net/minecraft/server/network/packet/Login
+hy net/minecraft/server/network/packet/Handshake
+jk net/minecraft/server/network/packet/Chat
+ew net/minecraft/server/network/packet/TimeUpdate
+l net/minecraft/server/network/packet/EntityEquipment
+km net/minecraft/server/network/packet/SpawnPosition
+a net/minecraft/server/network/packet/UseEntity
+db net/minecraft/server/network/packet/UpdateHealth
+ji net/minecraft/server/network/packet/Respawn
+fm net/minecraft/server/network/packet/PlayerPacket
+v net/minecraft/server/network/packet/PlayerPosition
+nm net/minecraft/server/network/packet/PlayerLook
+dc net/minecraft/server/network/packet/PlayerPositionLook
+gm net/minecraft/server/network/packet/PlayerDig
+eo net/minecraft/server/network/packet/PlayerPlaceBlock
+fd net/minecraft/server/network/packet/PlayerChangeSlot
+gq net/minecraft/server/network/packet/PlayerUseBed
+im net/minecraft/server/network/packet/EntityAnimate
+mk net/minecraft/server/network/packet/PlayerAction
+hu net/minecraft/server/network/packet/NamedEntitySpawn
+if net/minecraft/server/network/packet/ItemEntitySpawn
+cc net/minecraft/server/network/packet/CollectItem
+ls net/minecraft/server/network/packet/ObjectSpawn
+gf net/minecraft/server/network/packet/MobSpawn
+nt net/minecraft/server/network/packet/ArtSpawn
+jz net/minecraft/server/network/packet/StanceUpdate
+ef net/minecraft/server/network/packet/EntityVelocity
+la net/minecraft/server/network/packet/EntityDestroy
+mr net/minecraft/server/network/packet/EntityPacket
+lw net/minecraft/server/network/packet/EntityMove
+lh net/minecraft/server/network/packet/EntityLook
+ju net/minecraft/server/network/packet/EntityMoveLook
+kn net/minecraft/server/network/packet/EntityTeleport
+gc net/minecraft/server/network/packet/EntityStatus
+io net/minecraft/server/network/packet/EntityAttach
+nc net/minecraft/server/network/packet/EntityUpdateMetadata
+li net/minecraft/server/network/packet/ChunkPrepare
+cs net/minecraft/server/network/packet/ChunkData
+oq net/minecraft/server/network/packet/BlockMultiChange
+mn net/minecraft/server/network/packet/BlockChange
+nv net/minecraft/server/network/packet/BlockAction
+kt net/minecraft/server/network/packet/Explosion
+	a originX
+	b originY
+	c originZ
+ds net/minecraft/server/network/packet/EffectPlay
+bg net/minecraft/server/network/packet/IllegalAction
+	a availableStates
+df net/minecraft/server/network/packet/ThunderboltSpawn
+fw net/minecraft/server/network/packet/WindowOpen
+hw net/minecraft/server/network/packet/WindowClose
+ke net/minecraft/server/network/packet/WindowClick
+fe net/minecraft/server/network/packet/WindowSetSlot
+gr net/minecraft/server/network/packet/WindowItems
+id net/minecraft/server/network/packet/WindowSetProgress
+ja net/minecraft/server/network/packet/WindowTransaction
+ms net/minecraft/server/network/packet/SetSign
+	a x
+	b y
+	c z
+	d lines
+w net/minecraft/server/network/packet/MapData
+ix net/minecraft/server/network/packet/StatisticIncrement
+
+# Server Core
+fy net/minecraft/server/inventory/ItemStack
+	a amount
+	c id
+	d damage
+mo net/minecraft/server/util/DataWatcher
+ht net/minecraft/server/util/DataWatcherObject
+cz net/minecraft/server/math/AxisAlignedBB
+	g pool
+	h avail
+	a minX
+	b minY
+	c minZ
+	d maxX
+	e maxY
+	f maxZ
+	a (DDDDDD)Lcz; createUnpooled
+	b (DDDDDD)Lcz; createPooled
+	c (DDDDDD)Lcz; set
+	b (Lcz;)V set
+	b (DDD)Lcz; grow
+	d (DDD)Lcz; translate
+ba net/minecraft/server/math/Vec3D
+	d pool
+	e avail
+	a x
+	b y
+	c z
+	a (DDD)Lba; createUnpooled
+	b (DDD)Lba; createPooled
+	b ()Lba; normalize
+	c (DDD)Lba; add
+	a (Lba;)D distance
+	a (Lba;)D distanceSquared
+	d (DDD)D distanceSquared
+
+# Blocks
+na net/minecraft/server/block/Block
+
+# Entities
+lq net/minecraft/server/entity/Entity
+	aG entityId
+
+# NBT
+iq net/minecraft/server/nbt/NBTTagCompound
