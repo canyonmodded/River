@@ -98,12 +98,16 @@ ow net/minecraft/server/network/ReallyScaryStopThread
 net/minecraft/server/MinecraftServer net/minecraft/server/MinecraftServer
 	a log
 	d properties
+	e worlds
 	f playerList
 	l onlineMode
 	m spawnAnimals
 	n pvp
 	o allowFlight
+	s commandQueue
+	q running
 	c ()Z start
+	g ()V stop
 ky net/minecraft/server/ServerProperties
 	a logger
 	b properties
@@ -150,12 +154,6 @@ fc net/minecraft/server/PlayerList
 	k (Ljava/lang/String;)V whitelist
 	l (Ljava/lang/String;)V unwhitelist
 	e ()Ljava/util/Set; getWhitelist
-
-fy net/minecraft/inventory/ItemStack
-	a amount
-	c id
-	d damage
-ej net/minecraft/item/Item
 mo net/minecraft/util/DataWatcher
 ht net/minecraft/util/DataWatcherObject
 cz net/minecraft/math/AxisAlignedBB
@@ -201,14 +199,100 @@ gg net/minecraft/model/statistic/StatisticRegistry
 	a statisticById
 	b allStatistics
 hp net/minecraft/inventory/Inventory
+	a ()I getSize
 	a (ILfy;) setItem
+	a_ (Lem;)Z canOpen
 	c ()Ljava/lang/String; getTitle
+	d_ (I)Lfy; getItem
+	d ()I getMaxStackSize
+iy net/minecraft/inventory/CombinedInventory
+	a title
+	b bottom
+	c top
 
 # Blocks
 na net/minecraft/block/Block
+	bn id
+	m blocksById
+	a (ILjava/util/Random;)I getItemToDrop
+	a (Ljava/util/Random;)I getAmountToDrop
+nw net/minecraft/block/BlockPlant
+eu net/minecraft/block/BlockSapling
+ij net/minecraft/block/BlockWheat
+jc net/minecraft/block/FlowingLiquid
+is net/minecraft/block/StationaryLiquid
+az net/minecraft/block/RedstoneOre
+jh net/minecraft/world/TileEntity
+	a nameToClass
+	b classToName
+	d world
+	e x
+	f y
+	g z
+	h inactive
+	b (Liq;)V serialize
+	g_ ()V onTick
+	c (Liq;)Ljh; createFromNbt
+	e ()I getMetadata
+	f ()Lgt; createExtraPacket
+	h ()V makeInactive
+	g ()V makeActive
+ln net/minecraft/world/TileEntityFurnace
+	i inventory
+	a burnTime
+	b fuelTicks
+	c cookTime
+gk net/minecraft/world/TileEntityChest
+	a items
+cr net/minecraft/world/TileEntityJukebox
+	a record
+ak net/minecraft/world/TileEntityTrapdoor
+pq net/minecraft/world/TileEntitySign
+	a lines
+bx net/minecraft/world/TileEntityMobSpawner
+	i entityName
+	a delay
+mf net/minecraft/world/TileEntityNoteBlock
+	a note
+mu net/minecraft/world/TileEntityPiston
+
+# Items
+bb net/minecraft/item/ToolMaterial
+	a WOOD
+	b STONE
+	c IRON
+	d DIAMOND
+	e GOLD
+fy net/minecraft/inventory/ItemStack
+	a amount
+	c id
+	d damage
+ej net/minecraft/item/Item
+	c itemsById
+	a (Lfy;Ldj;Lem;)Lfy;
+	a (Lfy;Lem;Ldj;IIII)Z interactBlock
+ol net/minecraft/item/ItemMap
+lc net/minecraft/item/ItemCoal
+px net/minecraft/item/ItemFood
+bf net/minecraft/item/ItemMushroomStew
+jy net/minecraft/item/ItemCookie
+gz net/minecraft/item/ItemHoe
+nx net/minecraft/item/ItemArmor
 
 # Entities
+ga net/minecraft/entity/EntityRegistry
+	a entityNameToId
+	b entityClassToName
+	c entityIdToClass
+	d entityClassToId
+
+	a(Ljava/lang/Class;Ljava/lang/String;I) register
+	a(Ljava/lang/String;Ldj;)Llq; createEntityFromName
+	a(Liq;Ldj;)Llq; createEntityFromNbt
+	a(Llq;)I getId
+	b(Llq;)Ljava/lang/String; getName
 lq net/minecraft/entity/Entity
+	aL world
 	aG entityId
 	aM lastX
 	aN lastY
@@ -227,7 +311,12 @@ be net/minecraft/entity/Wolf
 em net/minecraft/entity/Human
 	r name
 hl net/minecraft/entity/LivingEntity
+	ab health
+	b (I)V heal
 dl net/minecraft/entity/Player
+fx net/minecraft/inventory/PlayerInventory
+	a items
+	b armor
 
 # Worlds and Regions
 jx net/minecraft/world/RegionFile
@@ -258,6 +347,20 @@ kq net/minecraft/world/RegionFileCache
 	d (Ljava/io/File;II)Ljava/io/DataOutputStream; write
 dj net/minecraft/world/World
 	b entities
+pj net/minecraft/world/ProgressListener
+	a (I)V onProgress
+br net/minecraft/world/ConversionProgressListener
+ob net/minecraft/util/NibbleArray
+	a array
+	a (III)I get
+	a (IIII)V set
+hi net/minecraft/world/Chunk
+	b blocks
+	e metadata
+	f skyLight
+	g blockLight
+	h heightMap
+	n populated
 
 # NBT
 iq net/minecraft/nbt/NBTTagCompound
