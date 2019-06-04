@@ -182,7 +182,14 @@ cz net/minecraft/math/AxisAlignedBB
 	c (DDDDDD)Lcz; set
 	b (Lcz;)V set
 	b (DDD)Lcz; grow
+	c (DDD)Lcz; translateCopy
 	d (DDD)Lcz; translate
+	a (Lba;)Z inBounds
+	e (DDD)Lcz; shrink
+	b ()Lcz; copy
+	b (Lba;) inYZBounds
+	c (Lba;) inXZBounds
+	d (Lba;) inXYBounds
 ba net/minecraft/math/Vec3D
 	d pool
 	e used
@@ -207,8 +214,15 @@ fq net/minecraft/math/MathUtil
 	a (DD)D absMax
 	a (F)F sin
 	b (F)F cos
-ns net/minecraft/model/statistic/Statistic
-gg net/minecraft/model/statistic/StatisticRegistry
+gd net/minecraft/math/CapturedVectorType
+	a AABB
+	b ENTITY
+nh net/minecraft/math/CapturedVector
+	a type
+	f vector
+	g entity
+ns net/minecraft/model/Statistic
+gg net/minecraft/model/StatisticRegistry
 	a statisticById
 	b allStatistics
 hp net/minecraft/inventory/Inventory
@@ -327,6 +341,7 @@ ga net/minecraft/entity/EntityRegistry
 	a(Llq;)I getId
 	b(Llq;)Ljava/lang/String; getName
 lq net/minecraft/entity/Entity
+	a idCounter
 	aL world
 	aG entityId
 	aM lastX
@@ -335,8 +350,20 @@ lq net/minecraft/entity/Entity
 	aP locX
 	aQ locY
 	aR locZ
+	aS motX
+	aT motY
+	aU motZ
+	aV yaw
+	aW pitch
+	aZ boundingBox
 	bw ticksLived
 	bh dead
+	bj width
+	bv random
+	a (Lfy;F)Lez; dropItem
+	ag ()Ljava/lang/String; getEntityName
+	b (DDD)V addMotion
+	c (DD)V setRotation
 	c (DDD)V setPosition
 	m_ ()V onEntityTick
 	R ()V baseTick
@@ -345,6 +372,8 @@ lq net/minecraft/entity/Entity
 be net/minecraft/entity/Wolf
 em net/minecraft/entity/Human
 	r name
+	z sleeping
+	a sleepTime
 hl net/minecraft/entity/LivingEntity
 	ab health
 	b (I)V heal
@@ -352,7 +381,46 @@ dl net/minecraft/entity/Player
 fx net/minecraft/inventory/PlayerInventory
 	a items
 	b armor
-
+ez net/minecraft/entity/Item
+	a item
+	b age
+	c health
+lp net/minecraft/entity/Arrow
+be net/minecraft/entity/Snowball
+kf net/minecraft/entity/Painting
+	e art
+	h ()B canFitPainting
+fr net/minecraft/model/Art
+	a KEBAB
+	b AZTEC
+	c ALBAN
+	d AZTEC2
+	e BOMB
+	f PLANT
+	g WASTELAND
+	h POOL
+	i COURBET
+	j SEA
+	k SUNSET
+	l CREEBET
+	m WANDERER
+	n GRAHAM
+	o MATCH
+	p BUST
+	q STAGE
+	r VOID
+	s SKULL_AND_BONES
+	t FIGHTERS
+	u POINTER
+	v PIGSCENE
+	w BURNING_SKULL
+	x SKELETON
+	y DONKEY_KONG
+	z LONGEST_NAME
+	A name
+	B x
+	C y
+	D z
 # Worlds and Regions
 jx net/minecraft/world/RegionFile
 	a emptySector
@@ -479,7 +547,12 @@ mc net/minecraft/command/CommandExecutor
 af net/minecraft/command/CommandQueueEntry
 	a command
 	b sender
-oa net/minecraft/math/Point3D
+oa net/minecraft/math/ImmutablePoint3D
 	a x
 	b y
 	c z
+ay net/minecraft/math/Point3D
+	a x
+	b y
+	c z
+	a (III)D distance
