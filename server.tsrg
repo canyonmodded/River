@@ -76,10 +76,18 @@ ix net/minecraft/network/packet/StatisticIncrement
 
 # Server Networking
 cu net/minecraft/server/network/NetworkListener
-	c running
-	f connectionId
+	b running
+	c server
+	d socket
+	e listeningThread
+	f connectionIdCounter
+	g pendingConnectionQueue
+	h playerConnectionQueue
+	a ()V processNetworkQueue
+	a (Lee;)V addPending
+	a (Lha;)V addPlayer
 ld net/minecraft/server/network/ConnectionAcceptorThread
-ee net/minecraft/server/network/HandshakePacketHandler
+ee net/minecraft/server/network/PendingConnection
 	g name
 jl net/minecraft/server/network/PlayerConnection
 	g outLock
@@ -100,13 +108,16 @@ net/minecraft/server/MinecraftServer net/minecraft/server/MinecraftServer
 	d properties
 	e worlds
 	f playerList
+	h currentTick
 	l onlineMode
 	m spawnAnimals
 	n pvp
 	o allowFlight
 	s commandQueue
 	q running
+	a (Ljava/lang/String;Lmb;)V queueCommand
 	c ()Z start
+	h ()V tick
 	g ()V stop
 ky net/minecraft/server/ServerProperties
 	a logger
@@ -165,6 +176,7 @@ cz net/minecraft/math/AxisAlignedBB
 	d maxX
 	e maxY
 	f maxZ
+	a ()V resetUsed
 	a (DDDDDD)Lcz; createUnpooled
 	b (DDDDDD)Lcz; createPooled
 	c (DDDDDD)Lcz; set
@@ -177,6 +189,7 @@ ba net/minecraft/math/Vec3D
 	a x
 	b y
 	c z
+	a ()V resetUsed
 	a (DDD)Lba; createUnpooled
 	b (DDD)Lba; createPooled
 	b ()Lba; normalize
@@ -209,7 +222,27 @@ iy net/minecraft/inventory/CombinedInventory
 	a title
 	b bottom
 	c top
-
+go net/minecraft/collect/IntHashMap
+	a entries
+	b size
+	c capacity
+	d loadFactor
+	e modCount
+	a ()V clear
+	a (I)Ljava/util/Object; get
+	b (I)Z containsKey
+	c (I)Log; getEntry
+	d (I)Ljava/lang/Object; remove
+	e (I)Log; internalRemove
+	g (I)I hash
+	h (I)V resize
+	a ([Log;)V rehash
+	a (ILjava/lang/Object;)V put
+	a (IILjava/lang/Object;I)V internalPut
+og net/minecraft/collect/IntHashMapEntry
+	a key
+	b value
+	c next
 # Blocks
 na net/minecraft/block/Block
 	bn id
@@ -255,6 +288,8 @@ bx net/minecraft/world/TileEntityMobSpawner
 mf net/minecraft/world/TileEntityNoteBlock
 	a note
 mu net/minecraft/world/TileEntityPiston
+lb net/minecraft/world/BlockWithTileEntity
+	a_ ()Ljh; createTileEntity
 
 # Items
 bb net/minecraft/item/ToolMaterial
@@ -347,6 +382,11 @@ kq net/minecraft/world/RegionFileCache
 	d (Ljava/io/File;II)Ljava/io/DataOutputStream; write
 dj net/minecraft/world/World
 	b entities
+	c tileEntities
+	h ()V onTick
+dp net/minecraft/server/ServerWorld
+	d (IIIIII)Ljava/util/List; getTileEntitiesInAABB
+
 pj net/minecraft/world/ProgressListener
 	a (I)V onProgress
 br net/minecraft/world/ConversionProgressListener
@@ -361,6 +401,9 @@ hi net/minecraft/world/Chunk
 	g blockLight
 	h heightMap
 	n populated
+	l tileEntities
+	a (III)I getBlockId
+	d (III)Ljh; getTileEntity
 
 # NBT
 fo net/minecraft/nbt/Tag
@@ -436,3 +479,7 @@ mc net/minecraft/command/CommandExecutor
 af net/minecraft/command/CommandQueueEntry
 	a command
 	b sender
+oa net/minecraft/math/Point3D
+	a x
+	b y
+	c z
