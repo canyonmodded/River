@@ -363,8 +363,67 @@ hi net/minecraft/world/Chunk
 	n populated
 
 # NBT
-iq net/minecraft/nbt/NBTTagCompound
-
+fo net/minecraft/nbt/Tag
+	a name
+	a (Ljava/io/DataInput;)V deserialize
+	a (Ljava/io/DataOutput;)V serialize
+	a ()B getId
+	a (Ljava/lang/String;)Lfo;
+	b ()Ljava/lang/String; getName
+hf net/minecraft/nbt/EndTag
+kb net/minecraft/nbt/ByteTag
+	a value
+mv net/minecraft/nbt/ShortTag
+	a value
+jq net/minecraft/nbt/IntegerTag
+	a value
+hv net/minecraft/nbt/LongTag
+	a value
+k net/minecraft/nbt/FloatTag
+	a value
+lx net/minecraft/nbt/DoubleTag
+	a value
+fb net/minecraft/nbt/ByteArrayTag
+	a value
+ou net/minecraft/nbt/StringTag
+	a value
+lr net/minecraft/nbt/ListTag
+	a items
+	b type
+	a (Lfo;)V add
+	a (I)Lfo; get
+	c ()I size
+iq net/minecraft/nbt/CompoundTag
+	a items
+	c ()Ljava/util/Collection; getItems
+	a (Ljava/lang/String;Lfo;)V put
+	a (Ljava/lang/String;B)V put
+	a (Ljava/lang/String;S)V put
+	a (Ljava/lang/String;I)V put
+	a (Ljava/lang/String;J)V put
+	a (Ljava/lang/String;F)V put
+	a (Ljava/lang/String;D)V put
+	a (Ljava/lang/String;Ljava/lang/String;)V put
+	a (Ljava/lang/String;[B) put
+	a (Ljava/lang/String;Liq;) put
+	a (Ljava/lang/String;Z) put
+	b (Ljava/lang/String;)Z contains
+	c (Ljava/lang/String;)B getByte
+	d (Ljava/lang/String;)S getShort
+	e (Ljava/lang/String;)I getInt
+	f (Ljava/lang/String;)J getLong
+	g (Ljava/lang/String;)F getFloat
+	h (Ljava/lang/String;)D getDouble
+	i (Ljava/lang/String;)Ljava/lang/String; getString
+	j (Ljava/lang/String;)[B getByteArray
+	k (Ljava/lang/String;)Liq; getCompound
+	l (Ljava/lang/String;)Llr; getList
+	n (Ljava/lang/String;)Z getBoolean
+ag net/minecraft/nbt/NBTSerializerUtils
+	a (Ljava/io/InputStream;)Liq; deserializeCompressed
+	a (Liq;Ljava/io/OutputStream;)V serializeCompressed
+	a (Ljava/io/DataInput;)Liq; deserialize
+	a (Liq;Ljava/io/DataOutput;)V serialize
 # Misc
 nf net/minecraft/server/gui/ServerFrame
 gy net/minecraft/server/gui/ServerStatusComponent
@@ -374,4 +433,6 @@ r net/minecraft/server/gui/CommandExecuteActionListener
 s net/minecraft/server/gui/CommandExecuteFocusListener
 bs net/minecraft/server/ConsoleInputReadThread
 mc net/minecraft/command/CommandExecutor
-af net/minecraft/command/CommandToExecute
+af net/minecraft/command/CommandQueueEntry
+	a command
+	b sender
