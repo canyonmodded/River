@@ -404,9 +404,9 @@ iq net/minecraft/nbt/CompoundTag
 	a (Ljava/lang/String;F)V put
 	a (Ljava/lang/String;D)V put
 	a (Ljava/lang/String;Ljava/lang/String;)V put
-	a (Ljava/lang/String;[B) put
-	a (Ljava/lang/String;Liq;) put
-	a (Ljava/lang/String;Z) put
+	a (Ljava/lang/String;[B)V put
+	a (Ljava/lang/String;Liq;)V put
+	a (Ljava/lang/String;Z)V put
 	b (Ljava/lang/String;)Z contains
 	c (Ljava/lang/String;)B getByte
 	d (Ljava/lang/String;)S getShort
