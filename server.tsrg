@@ -369,13 +369,17 @@ lq net/minecraft/entity/Entity
 	R ()V baseTick
 	E ()V onEntityPassengerTick
 	J ()V die
+	a (Llq;)V onKilledBy
 be net/minecraft/entity/Wolf
 em net/minecraft/entity/Human
+	i inventory
 	r name
+	s dimension
 	z sleeping
 	a sleepTime
 hl net/minecraft/entity/LivingEntity
 	ab health
+	a (Llq;I)Z damage
 	b (I)V heal
 dl net/minecraft/entity/Player
 fx net/minecraft/inventory/PlayerInventory
